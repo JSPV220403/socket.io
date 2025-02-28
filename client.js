@@ -8,13 +8,11 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-socket.on('connect', () => {
-    console.log('Connected to server. Type a message:');
-    
-    rl.on('line', (message) => {
-        socket.emit('message', message);
-    });
+console.log('Connected to server. Type a message:');
+rl.on('line', (message) => {
+    socket.emit('message', message);
 });
+
 
 socket.on('message', (msg) => {
     console.log(`New message: ${msg}`);
